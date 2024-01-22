@@ -116,7 +116,7 @@ st.markdown(
 <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 10px; padding-bottom: 10px;">
     <div>
         <span style="font-size: 14px; font-weight: bold;">Ashutosh Kumar</span><br>
-        <span style="font-size: 12px;">AI Caption Developer</span>
+        <span style="font-size: 12px;">Software Developer</span>
     </div>
     <div>
         <span style="font-size: 12px;">Twitter: x.com/ashusnapx: </span><br>
