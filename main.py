@@ -17,7 +17,7 @@ load_dotenv()
 st.set_page_config(page_title='Instagram Caption Generator', page_icon="📸", layout="wide")
 
 # Header with Instagram-like styling
-st.title('📸 Instagram Caption Generator by @ashusnapx 📸')
+st.title('Instagram Caption Generator by @ashusnapx 📸')
 st.write("Unleash the magic of AI to craft captivating Instagram captions!")
 
 # Configure Google Gemini API
