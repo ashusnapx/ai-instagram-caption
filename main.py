@@ -8,15 +8,16 @@ import google.generativeai as genai
 from datetime import datetime
 import cloudinary
 import cloudinary.uploader
+import streamlit.components.v1 as components
 
 # Load environment variables
 load_dotenv()
 
 # Set up the frontend with Instagram-like accent color
-st.set_page_config(page_title='Caption Generator', page_icon="📸", layout="wide")
+st.set_page_config(page_title='Instagram Caption Generator', page_icon="📸", layout="wide")
 
 # Header with Instagram-like styling
-st.title('Caption Generator by @ashusnapx 📸')
+st.title('📸 Instagram Caption Generator by @ashusnapx 📸')
 st.write("Unleash the magic of AI to craft captivating Instagram captions!")
 
 # Configure Google Gemini API
@@ -55,7 +56,7 @@ def get_image_uploaded(uploaded_image):
 
         image_parts = [
             {
-                'mime_type': 'image/jpeg',  # Adjust the MIME type if necessary
+                'mime_type': 'image/jpeg',
                 'data': base64.b64encode(image_byte_arr).decode()
             }
         ]
@@ -64,7 +65,7 @@ def get_image_uploaded(uploaded_image):
         raise FileNotFoundError('Please upload your image...')
 
 # Job description input area
-job_description = st.text_input('Any specific requirements for your caption:', key='input')
+job_description = st.text_input('Any specific requirements for your caption (like: Romantic, Cute, ...) :', key='input')
 
 # Image upload area
 uploaded_file = st.file_uploader('Upload your image (* JPEG or PNG allowed)', type=['jpg', 'jpeg', 'png'])
@@ -78,7 +79,7 @@ variant1 = st.button('Generate Captions', key='generate_button')
 
 # Updated Input prompt
 input_prompt1 = """
-Act as a professional Instagram caption generator. Your task would be to analyze the image and generate the best, short, catchy, vibey, modern, poetic, Hindi, English, blend, bilingual, etc. variations possible. Generate as many captions as possible. Add better emojis in the end, add hashtags, and also add @ashusnapx at the end of the caption.
+You are an advanced Instagram caption generator designed to provide unique, concise, and vibrant captions for images. Your goal is to analyze the given image comprehensively, considering various perspectives, and craft 5 different captions. If the image portrays gods or goddesses from any country, let the captions revolve around their divine presence. For other images, ensure that each caption is short, creative, infused with modern and poetic elements, and should be in English. Ensure that the captions add depth to the photo, incorporate appropriate emojis, hashtags, and conclude with the tag @ashusnapx for a personalized touch.
 """
 
 # Button actions
@@ -86,7 +87,7 @@ if variant1:
     if uploaded_file is not None:
         image_data = get_image_uploaded(uploaded_file)
         response = get_gemini_responses(input_prompt1, image_data, job_description)
-        st.subheader('Caption Ideas:')
+        st.subheader('Caption Ideas : ')
         st.write(response)
 
         # Convert image data to bytes
